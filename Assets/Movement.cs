@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
         
 
         bool grounded = Physics.CheckSphere(transform.position - transform.up * control.height  * 0.3f,0.5f,lm);
-        Debug.Log(grounded);
+
 
 
         if (grounded) 
@@ -50,12 +50,12 @@ public class Movement : MonoBehaviour
         }
 
         playerVelocity.y += -10 * Time.deltaTime;
-        
+
         float mx = Input.GetAxis("Mouse X");
         float my = Input.GetAxis("Mouse Y");
         cam.transform.Rotate(new Vector3(-my, 0, 0), Space.Self);
         transform.Rotate(new Vector3(0, mx, 0), Space.World);
-        
+
         if ((control.collisionFlags & CollisionFlags.Above) != 0)
         {
             playerVelocity.y -= 60 * Time.deltaTime;
@@ -84,6 +84,7 @@ public class Movement : MonoBehaviour
         if (crouched == true)
         {
             control.height = Mathf.Lerp(control.height, 1, 0.4f);
+
         }
         if (crouched == false)
         {
